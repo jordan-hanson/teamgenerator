@@ -1,4 +1,7 @@
-<!DOCTYPE html>
+const fs = require("fs")
+
+function generateManager(data) {
+    const html = `<!DOCTYPE html>
     <html lang="en">
     
     <head>
@@ -99,7 +102,7 @@
             <div class="card">
                 <div class="col">
                     <h2>
-                        Name
+                        ${data.name}
                     </h2>
                 </div>
                 <div class="row justify-content-md-center">
@@ -123,8 +126,8 @@
                 <div class="card-body" style="color: black;">
                     <ul class="list-group">
                         <li class="list-group-item">ID:</li>
-                        <li class="list-group-item">Email: </li>
-                        <li class="list-group-item">Office number: </li>
+                        <li class="list-group-item">Email: ${data.email}</li>
+                        <li class="list-group-item">Office number: ${data.officenumber}</li>
                     </ul>
                 </div>
             </div>
@@ -132,4 +135,10 @@
         </div>
     </body>
     
-    </html>
+    </html>`
+    fs.writeFile("manager.html", html, function (error) {
+        console.log(error)
+    })
+}
+
+module.exports = generateManager
