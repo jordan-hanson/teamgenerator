@@ -119,7 +119,7 @@ function generateIntern(data) {
                         </svg>
                     </div>
                     <h6 class="col-m-4">
-                        Position
+                        ${data.title}
                     </h6>
                     <div class="col-m-4"></div>
                 </div>
@@ -127,7 +127,7 @@ function generateIntern(data) {
                     <ul class="list-group">
                         <li class="list-group-item">ID:</li>
                         <li class="list-group-item">Email: ${data.email}</li>
-                        <li class="list-group-item">Office number: ${data.officenumber}</li>
+                        <li class="list-group-item">Office number: ${data.school}</li>
                     </ul>
                 </div>
             </div>

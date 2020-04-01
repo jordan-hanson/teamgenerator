@@ -102,7 +102,7 @@ function generateManager(data) {
             <div class="card">
                 <div class="col">
                     <h2>
-                        ${data.name}
+                     ${data.name}
                     </h2>
                 </div>
                 <div class="row justify-content-md-center">
@@ -119,7 +119,7 @@ function generateManager(data) {
                         </svg>
                     </div>
                     <h6 class="col-m-4">
-                        Position
+                        ${data.title}
                     </h6>
                     <div class="col-m-4"></div>
                 </div>
