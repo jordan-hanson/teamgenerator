@@ -12,14 +12,14 @@ function main() {
         name: "employeetype",
         type: "list",
         choices: [
-            "manager", "engineer", "intern"
+            "Manager", "Engineer", "Intern"
         ],
         message: "What type of employee do you want to make?"
     }).then(function (answer) {
         console.log(answer)
-        if (answer.employeetype === "engineer") {
+        if (answer.employeetype === "Engineer") {
             engineer(answer)
-        } else if (answer.employeetype === "intern") {
+        } else if (answer.employeetype === "Intern") {
             intern(answer)
         } else {
             manager(answer)

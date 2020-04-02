@@ -13,7 +13,7 @@ function generateEngineer(data) {
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" />
         <link href="https://fonts.googleapis.com/css?family=BioRhyme|Cabin&display=swap" rel="stylesheet">
     
-        <title>Manager</title>
+        <title>Engineer</title>
         <style>
             *,
             *::after,
