@@ -1,9 +1,8 @@
 const inquirer = require("inquirer")
-const fs = require("fs")
 const generateManager = require("./generateManager")
 const generateEngineer = require("./generateEngineer")
 const generateIntern = require("./generateIntern")
-let teamMembers = []
+const teamMembers = []
 const generateTeam = require("./generateTeam")
 
 main();
@@ -16,7 +15,6 @@ function main() {
         ],
         message: "What type of employee do you want to make?"
     }).then(function (answer) {
-        console.log(answer)
         if (answer.employeetype === "Engineer") {
             engineer(answer)
         } else if (answer.employeetype === "Intern") {
@@ -24,13 +22,11 @@ function main() {
         } else {
             manager(answer)
         }
-        // HOW CAN I PASS THIS ANSWER TO MY GENERATE HTML WHEN IT FIRES OFF MY OTHER FUNCTIONS
     })
 }
 
 function manager(answer) {
     let title = answer
-    console.log("this is my main answer", title)
     inquirer.prompt([{
         name: "name",
         type: "input",
@@ -55,13 +51,7 @@ function manager(answer) {
             'no'
         ]
     }]).then(function (answers) {
-        let data = [title, answers]
-        data.title = title.employeetype
-        data.name = answers.name
-        data.email = answers.email
-        data.officenumber = answers.officenumber
-
-        let teamData = {
+        let data = {
             name: answers.name,
             email: answers.email,
             officenumber: answers.officenumber,
@@ -69,15 +59,15 @@ function manager(answer) {
         }
         if (answers.add === 'yes') {
             console.log("this is data", data)
-            teamMembers.push(teamData)
+            teamMembers.push(data)
             generateManager(data)
             main()
         } else {
-            teamMembers.push(teamData)
+            teamMembers.push(data)
             generateManager(data)
             generateTeam(teamMembers)
+            console.log("this is my array data", teamMembers)
         }
-        console.log("this is manager answers", answers)
     })
 }
 
@@ -110,13 +100,7 @@ function intern(answer) {
         ]
     },
     ]).then(function (answers) {
-        let data = [title, answers]
-        data.title = title.employeetype
-        data.name = answers.name
-        data.email = answers.email
-        data.school = answers.school
-
-        let teamData = {
+        let data = {
             name: answers.name,
             email: answers.email,
             school: answers.school,
@@ -124,17 +108,16 @@ function intern(answer) {
         }
         if (answers.add === 'yes') {
             console.log("this is data", data)
-            teamMembers.push(teamData)
+            teamMembers.push(data)
             generateIntern(data)
             main()
         } else {
-            teamMembers.push(teamData)
-            generateIntern(answer)
+            teamMembers.push(data)
+            generateIntern(data)
             generateTeam(teamMembers)
             console.log("my answers", answer)
         }
     })
-    console.log("ask intern questions", intern)
 }
 
 function engineer(answer) {
@@ -165,13 +148,7 @@ function engineer(answer) {
         ]
     }
     ]).then(function (answers) {
-        let data = [title, answers]
-        data.title = title.employeetype
-        data.name = answers.name
-        data.email = answers.email
-        data.username = answers.username
-
-        let teamData = {
+        let data = {
             name: answers.name,
             email: answers.email,
             username: answers.username,
@@ -179,15 +156,16 @@ function engineer(answer) {
         }
         if (answers.add === 'yes') {
             console.log("this is data", data)
-            teamMembers.push(teamData)
+            teamMembers.push(data)
             generateEngineer(data)
             main()
         } else {
-            teamMembers.push(teamData)
+            teamMembers.push(data)
             generateEngineer(data)
             generateTeam(teamMembers)
             console.log("my answers", data)
+            console.log("this is my array data", teamMembers)
+
         }
     })
-    console.log("ask engineer questions", engineer)
 }
